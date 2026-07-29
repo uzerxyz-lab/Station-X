@@ -22,28 +22,17 @@ jobs:
         with:
           flutter-version: '3.19.0'
           channel: 'stable'
-          cache: true
 
-      - name: Create Fresh Flutter Project Structure
+      - name: Create Flutter Project and Replace Main
         run: |
           flutter create . --org com.stationx.app --project-name station_x --platforms=android
-          rm -rf lib/*
-          rm -rf pubspec.yaml
+          rm -f lib/main.dart
+          mv main.dart lib/main.dart
 
-      - name: Move our Files to Project
+      - name: Get Dependencies & Build APK
         run: |
-          # یہاں ہم اپنی فائلیں کاپی کر رہے ہیں جو آپ نے اپ لوڈ کی ہیں
-          # لیکن چونکہ آپ نے main.dart کو lib/ میں رکھا ہے، ہم اسے چیک کریں گے
-          ls -la lib/
-
-      - name: Copy Custom Main and Pubspec
-        run: |
-          # گیتھب سے آپ کی بنائی ہوئی main.dart اور pubspec.yaml کو صحیح جگہ سیٹ کرنا
-          # اگر main.dart پہلے سے lib میں ہے تو اسے رہنے دیں گے
           flutter pub get
-
-      - name: Build APK
-        run: flutter build apk --release
+          flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
