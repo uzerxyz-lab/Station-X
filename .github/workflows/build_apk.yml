@@ -23,11 +23,13 @@ jobs:
           flutter-version: '3.19.0'
           channel: 'stable'
 
-      - name: Create Flutter Project and Replace Main
+      - name: Create Flutter Project Structure Around Code
         run: |
+          # پہلے سے موجود main.dart کو محفوظ رکھتے ہوئے پروجیکٹ سیٹ اپ کرنا
+          mkdir -p temp_lib
+          cp lib/main.dart temp_lib/main.dart
           flutter create . --org com.stationx.app --project-name station_x --platforms=android
-          rm -f lib/main.dart
-          mv main.dart lib/main.dart
+          cp temp_lib/main.dart lib/main.dart
 
       - name: Get Dependencies & Build APK
         run: |
