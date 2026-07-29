@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "487635450379",
+    "project_id": "station-x-9398d",
+    "storage_bucket": "station-x-9398d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487635450379:android:10c0a24e771221bd53650e",
+        "android_client_info": {
+          "package_name": "com.uzerxyzlab.stationx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYJQXaTBj_9wD6tQEaOWWohKD9LizLKBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
