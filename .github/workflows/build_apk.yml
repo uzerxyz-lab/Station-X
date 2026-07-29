@@ -24,8 +24,23 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Install Dependencies
-        run: flutter pub get
+      - name: Create Fresh Flutter Project Structure
+        run: |
+          flutter create . --org com.stationx.app --project-name station_x --platforms=android
+          rm -rf lib/*
+          rm -rf pubspec.yaml
+
+      - name: Move our Files to Project
+        run: |
+          # یہاں ہم اپنی فائلیں کاپی کر رہے ہیں جو آپ نے اپ لوڈ کی ہیں
+          # لیکن چونکہ آپ نے main.dart کو lib/ میں رکھا ہے، ہم اسے چیک کریں گے
+          ls -la lib/
+
+      - name: Copy Custom Main and Pubspec
+        run: |
+          # گیتھب سے آپ کی بنائی ہوئی main.dart اور pubspec.yaml کو صحیح جگہ سیٹ کرنا
+          # اگر main.dart پہلے سے lib میں ہے تو اسے رہنے دیں گے
+          flutter pub get
 
       - name: Build APK
         run: flutter build apk --release
